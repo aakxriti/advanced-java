@@ -1,0 +1,69 @@
+package javaLab;
+import java.util.ArrayList;
+import java.util.Iterator;
+ 
+ 
+class Stud {
+    String name;
+    String usn;
+    String dept;
+    char section;
+    double cgpa;
+ 
+    public Stud(String name, String usn, String dept, char section, double cgpa) {
+        this.name = name;
+        this.usn = usn;
+        this.dept = dept;
+        this.section = section;
+        this.cgpa = cgpa;
+    }
+}
+ 
+public class Student {
+    public static void main(String[] args) {
+        // Create an ArrayList to store Student objects
+        ArrayList<Stud> studentList = new ArrayList<>();
+ 
+        // Add some sample students to the list
+        studentList.add(new Stud("John", "USN123", "ise", 'c', 9.0));
+        studentList.add(new Stud("Jane", "USN456", "CSE", 'B', 7.7));
+        studentList.add(new Stud("Bob", "USN789", "ECE", 'C', 8.9));
+        // Add more students as needed
+ 
+        // Search for students with CGPA > 8.5
+        System.out.println("Students with CGPA > 8.5:");
+        for (Stud student : studentList) {
+            if (student.cgpa > 8.5) {
+                System.out.println(student.name + " - CGPA: " + student.cgpa);
+            }
+        }
+ 
+        // Search for students in 'ISE' department
+        System.out.println("\nStudents in 'ISE' department:");
+        for (Stud student : studentList) {
+            if (student.dept.equalsIgnoreCase("ISE")) {
+                System.out.println(student.name + " - Department: " + student.dept);
+            }
+        }
+ 
+        // Search for students in 'C' section
+        System.out.println("\nStudents in 'C' section:");
+        for (Stud student : studentList) {
+            if (student.section == 'C' || student.section=='c') {
+                System.out.println(student.name + " - Section: " + student.section);
+            }
+        }
+ 
+        // Use Iterator to iterate through the list
+        System.out.println("\nIterating through the list using Iterator:");
+        Iterator<Stud> iterator = studentList.iterator();
+        while (iterator.hasNext()) {
+            Stud student = iterator.next();
+            System.out.println(student.name + " - CGPA: " + student.cgpa + " bearing USN: "+student.usn);
+        }
+ 
+        
+    }
+}
+}
+}
